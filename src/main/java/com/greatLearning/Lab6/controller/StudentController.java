@@ -15,11 +15,16 @@ import com.greatLearning.Lab6.entity.StudentDetails;
 import com.greatLearning.Lab6.service.StudentService;
 
 @Controller
-@RequestMapping("studentData")
+@RequestMapping("/studentData")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
+	
+	 @RequestMapping("/home" )
+	    public String goHome() {
+	        return "home";
+	    }
 
 	@RequestMapping("/list")
 	public String listStudents(Model theModel) {
@@ -56,8 +61,9 @@ public class StudentController {
 			thestudent.setLastname(lastname);
 			thestudent.setCourse(course);
 			thestudent.setCountry(country);
-		} else
+		} else {
 			thestudent = new StudentDetails(firstname, lastname, course, country);
+		}	
 		studentService.save(thestudent);
 		return "redirect:/studentData/list";
 	}
@@ -69,7 +75,9 @@ public class StudentController {
 	}
 
 	@RequestMapping("/search")
-	public String search(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, Model theModel) {
+	public String search(@RequestParam("firstname") String firstname,
+			@RequestParam("lastname") String lastname, @RequestParam("course") String course,
+			@RequestParam("country") String country, Model theModel) {
 
 		// check names, if both are empty then just give list of all Books
 
@@ -77,7 +85,7 @@ public class StudentController {
 			return "redirect:/studentData/list";
 		} else {
 			// else, search by first name and last name
-			List<StudentDetails> theStudents = studentService.searchBy(firstname, lastname);
+			List<StudentDetails> theStudents = studentService.searchBy(firstname, lastname,course,country);
 
 			// add to the spring model
 			theModel.addAttribute("StudentDetails", theStudents);

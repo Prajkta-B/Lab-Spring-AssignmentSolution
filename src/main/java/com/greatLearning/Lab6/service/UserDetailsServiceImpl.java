@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.greatLearning.Lab6.entity.User;
 import com.greatLearning.Lab6.repository.UserRepository;
 import com.greatLearning.Lab6.security.StudentUserDetails;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired

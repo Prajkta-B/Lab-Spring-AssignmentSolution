@@ -8,5 +8,5 @@ import com.greatLearning.Lab6.entity.StudentDetails;
 
 public interface StudentRepository extends JpaRepository<StudentDetails, Integer> {
 
-	List<StudentDetails> findByFirstnameContainsAndLastnameContainsAllIgnoreCase(String firstname, String lastname);
+	public List<StudentDetails> findByFirstnameContainsAndLastnameContainsAndCourseContainsAndCountryContains(String firstname, String lastname, String course, String country);
 }

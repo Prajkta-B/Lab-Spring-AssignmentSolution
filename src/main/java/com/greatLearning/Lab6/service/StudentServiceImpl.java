@@ -20,9 +20,9 @@ import com.greatLearning.Lab6.repository.StudentRepository;
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
-	StudentRepository studentRepository;
+	private StudentRepository studentRepository;
 	
-	@Override
+	//@Override
 	public List<StudentDetails> findAll() {
 		// TODO Auto-generated method stub
 		List<StudentDetails> students = studentRepository.findAll();
@@ -49,9 +49,9 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<StudentDetails> searchBy(String firstname, String lastname) {
+	public List<StudentDetails> searchBy(String firstname, String lastname,String course, String country) {
 		// TODO Auto-generated method stub
-		List<StudentDetails> students = studentRepository.findByFirstnameContainsAndLastnameContainsAllIgnoreCase(firstname, lastname);
+		List<StudentDetails> students = studentRepository.findByFirstnameContainsAndLastnameContainsAndCourseContainsAndCountryContains(firstname, lastname,course, country);
 		return students;
 	}
 

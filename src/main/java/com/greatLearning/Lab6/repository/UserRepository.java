@@ -12,8 +12,8 @@ import com.greatLearning.Lab6.entity.User;
  * @author User
  *
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-	@Query("SELECT u FROM User u where u.username=?1")
+	@Query("FROM User u where u.username=?1")
 	public User getUserByUsername(String username);
 }

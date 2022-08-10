@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.greatLearning.Lab6.service.UserDetailsServiceImpl;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
@@ -29,11 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(userDetailsService());
-		authProvider.setPasswordEncoder(passwordEncoder());
-		
-		return authProvider;
+		DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
+		dap.setPasswordEncoder(passwordEncoder());
+		dap.setUserDetailsService(userDetailsService());
+
+		return dap;
 	}
 	
 	@Override

@@ -15,10 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.greatLearning.Lab6.entity.Role;
 import com.greatLearning.Lab6.entity.User;
 
-/**
- * @author User
- *
- */
 public class StudentUserDetails implements UserDetails {
 	
 	private User user;
